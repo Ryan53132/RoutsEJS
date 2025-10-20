@@ -62,7 +62,7 @@
     </div>
     <div>
         <h2>Adicionar novo item</h2>
-        <button onclick="limparFormulario()">Limpar</button>
+        <button onclick="limparFormularioInserir()">Limpar</button>
         <button onclick="opcaoPessoa()">pessoa</button>
         <button onclick="opcaoFormacao()">formacao</button>
         <button onclick="opcaoCurso()">curso</button>
@@ -73,6 +73,7 @@
     </div>
     <div>
         <h2>Excluir formação acadêmica</h2>
+        <button onclick="limparFormularioExcluir()">Limpar</button>
         <button onclick="excluirFormacao()">Excluir formação</button>
         <button onclick="excluirCurso()">Excluir curso</button>
         <button onclick="excluirProjeto()">Excluir projeto</button>
@@ -84,8 +85,11 @@
 </html>
 
 <script>
-    function limparFormulario() {
+    function limparFormularioInserir() {
         document.getElementById("formulario").innerHTML = "";
+    }
+    function limparFormularioExcluir() {
+        document.getElementById("formularioExcluir").innerHTML = "";
     }
     function opcaoPessoa() {
         html = `
@@ -164,6 +168,7 @@
     function excluirLink(){
         html = `
         <form action="/excluir" method="post">
+            <input type="hidden" name="opcao" value="link">
             <select name="id">
                 <% links.forEach(function(item, index) { %>
                     <option value="<%= index %>"><%= item.nome %> - <%= item.url %></option>
@@ -177,7 +182,8 @@
 
     function excluirFormacao(){
         html = `
-        <form action="/excluirFormacao" method="post">
+        <form action="/excluir" method="post">
+            <input type="hidden" name="opcao" value="formacao">
             <select name="id">
                 <% formacao.forEach(function(item, index) { %>
                     <option value="<%= index %>"><%= item.nivel %> - <%= item.instituicao %> (<%= item.ano %>)</option>
@@ -191,7 +197,8 @@
 
     function excluirCurso(){
         html = `
-        <form action="/excluirCurso" method="post">
+        <form action="/excluir" method="post">
+            <input type="hidden" name="opcao" value="curso">
             <select name="id">
                 <% cursos.forEach(function(item, index) { %>
                     <option value="<%= index %>"><%= item.nome %> - <%= item.instituicao %> (<%= item.ano %>)</option>
@@ -205,7 +212,8 @@
 
     function excluirProjeto(){
         html = `
-        <form action="/excluirProjeto" method="post">
+        <form action="/excluir" method="post">
+            <input type="hidden" name="opcao" value="projeto">
             <select name="id">
                 <% projetos.forEach(function(item, index) { %>
                     <option value="<%= index %>"><%= item.nome %> - <%= item.descricao %></option>
@@ -219,7 +227,8 @@
 
     function excluirCompetencia(){
         html = `
-        <form action="/excluirCompetencia" method="post">
+        <form action="/excluir" method="post">
+            <input type="hidden" name="opcao" value="competencia">
             <select name="id">
                 <% competencias.forEach(function(item, index) { %>
                     <option value="<%= index %>"><%= item %></option>

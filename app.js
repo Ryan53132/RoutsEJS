@@ -40,7 +40,7 @@ app.post('/adicionar', function(req, res) {
     } else if (opcao == "projeto") {
         projetos.push(req.body.projeto);
     } else if (opcao == "competencia") {
-        competencias.push(req.body.competencia);
+        competencias.push(req.body.competencia["nome"]);
     } else if (opcao == "link") {
         links.push(req.body.link);
     }
@@ -49,8 +49,18 @@ app.post('/adicionar', function(req, res) {
 
 // Rota que exclui um cliente da lista
 app.post('/excluir', function(req, res) {
-    var id = req.body.id;
-    links.splice(id, 1);
+    var opcao = req.body.opcao;
+    if (opcao == "formacao") {
+        formacao.splice(req.body.id, 1);
+    } else if (opcao == "curso") {
+        cursos.splice(req.body.id, 1);
+    } else if (opcao == "projeto") {
+        projetos.splice(req.body.id, 1);
+    } else if (opcao == "competencia") {
+        competencias.splice(req.body.id, 1);
+    } else if (opcao == "link") {
+        links.splice(req.body.id, 1);
+    }
     res.redirect('/');
 });
 
