@@ -1,9 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var app = express();
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
 // Armazenamento em memória para os clientes
@@ -14,7 +16,8 @@ var pessoa = {
     telefone: "(12) 98836-0447",
     email: "ryan@example.com",
     endereco: "Rua Exemplo, 123",
-    descricao: "sou programador, cursando Análise e Desenvolvimento de Sistemas na fatec a 3 semestres."
+    descricao: "sou programador, cursando Análise e Desenvolvimento de Sistemas na fatec a 3 semestres.",
+    foto: "/imagem/foto-perfil.jpg"
 }
 var formacao = [];
 var cursos = [];
@@ -48,7 +51,7 @@ app.post('/adicionar', function(req, res) {
 });
 
 // Rota que exclui um cliente da lista
-app.post('/excluir', function(req, res) {
+app.delete('/excluir', function (req, res) {
     var opcao = req.body.opcao;
     if (opcao == "formacao") {
         formacao.splice(req.body.id, 1);

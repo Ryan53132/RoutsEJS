@@ -10,7 +10,7 @@
 <body>
     <% var opcao = "pessoa"; %>
     <div>
-        <img src="" alt="">
+        <img src="<%= pessoa.foto %>" alt="Foto de <%= pessoa.nome %>" style="max-width: 200px; border-radius: 50%; margin: 20px;">
         <h2><%= pessoa.nome %></h2>
         <p><strong>Github:</strong> <%= pessoa.github %></p>
         <p><strong>LinkedIn:</strong> <%= pessoa.linkedin %></p>
@@ -101,6 +101,7 @@
                 <label>Telefone: <input type="text" name="pessoa[telefone]" value="<%= pessoa.telefone %>"></label><br>
                 <label>Email: <input type="text" name="pessoa[email]" value="<%= pessoa.email %>"></label><br>
                 <label>Endereço: <input type="text" name="pessoa[endereco]" value="<%= pessoa.endereco %>"></label><br>
+                <label>Foto: <input type="text" name="pessoa[foto]" value="<%= pessoa.foto %>"></label><br>
                 <label>Descrição: <textarea name="pessoa[descricao]"><%= pessoa.descricao %></textarea></label><br>
                 <button type="submit">Enviar</button>
             </form>
@@ -167,7 +168,7 @@
 
     function excluirLink(){
         html = `
-        <form action="/excluir" method="post">
+        <form action="/excluir?_method=DELETE" method="post">
             <input type="hidden" name="opcao" value="link">
             <select name="id">
                 <% links.forEach(function(item, index) { %>
@@ -182,7 +183,7 @@
 
     function excluirFormacao(){
         html = `
-        <form action="/excluir" method="post">
+        <form action="/excluir?_method=DELETE" method="post">
             <input type="hidden" name="opcao" value="formacao">
             <select name="id">
                 <% formacao.forEach(function(item, index) { %>
@@ -197,7 +198,7 @@
 
     function excluirCurso(){
         html = `
-        <form action="/excluir" method="post">
+        <form action="/excluir?_method=DELETE" method="post">
             <input type="hidden" name="opcao" value="curso">
             <select name="id">
                 <% cursos.forEach(function(item, index) { %>
@@ -212,7 +213,7 @@
 
     function excluirProjeto(){
         html = `
-        <form action="/excluir" method="post">
+        <form action="/excluir?_method=DELETE" method="post">
             <input type="hidden" name="opcao" value="projeto">
             <select name="id">
                 <% projetos.forEach(function(item, index) { %>
@@ -227,7 +228,7 @@
 
     function excluirCompetencia(){
         html = `
-        <form action="/excluir" method="post">
+        <form action="/excluir?_method=DELETE" method="post">
             <input type="hidden" name="opcao" value="competencia">
             <select name="id">
                 <% competencias.forEach(function(item, index) { %>
