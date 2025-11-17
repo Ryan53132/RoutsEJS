@@ -172,7 +172,7 @@
             <input type="hidden" name="opcao" value="link">
             <select name="id">
                 <% links.forEach(function(item, index) { %>
-                    <option value="<%= index %>"><%= item.nome %> - <%= item.url %></option>
+                    <option value="<%= item.id %>"><%= item.nome %> - <%= item.url %></option>
                 <% }) %>
             </select>
             <button type="submit">Excluir</button>
@@ -187,7 +187,7 @@
             <input type="hidden" name="opcao" value="formacao">
             <select name="id">
                 <% formacao.forEach(function(item, index) { %>
-                    <option value="<%= index %>"><%= item.nivel %> - <%= item.instituicao %> (<%= item.ano %>)</option>
+                    <option value="<%= item.id %>"><%= item.nivel %> - <%= item.instituicao %> (<%= item.ano %>)</option>
                 <% }) %>
             </select>
             <button type="submit">Excluir</button>
@@ -202,7 +202,7 @@
             <input type="hidden" name="opcao" value="curso">
             <select name="id">
                 <% cursos.forEach(function(item, index) { %>
-                    <option value="<%= index %>"><%= item.nome %> - <%= item.instituicao %> (<%= item.ano %>)</option>
+                    <option value="<%= item.id %>"><%= item.nome %> - <%= item.instituicao %> (<%= item.ano %>)</option>
                 <% }) %>
             </select>
             <button type="submit">Excluir</button>
@@ -217,7 +217,7 @@
             <input type="hidden" name="opcao" value="projeto">
             <select name="id">
                 <% projetos.forEach(function(item, index) { %>
-                    <option value="<%= index %>"><%= item.nome %> - <%= item.descricao %></option>
+                    <option value="<%= item.id %>"><%= item.nome %> - <%= item.descricao %></option>
                 <% }) %>
             </select>
             <button type="submit">Excluir</button>
@@ -232,7 +232,7 @@
             <input type="hidden" name="opcao" value="competencia">
             <select name="id">
                 <% competencias.forEach(function(item, index) { %>
-                    <option value="<%= index %>"><%= item %></option>
+                    <option value="<%= item.id %>"><%= item %></option>
                 <% }) %>
             </select>
             <button type="submit">Excluir</button>
